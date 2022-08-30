@@ -5,32 +5,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="css/generel.css" />
+    <link rel="stylesheet" href="generel.css" />
     <meta name="robots" content="noindex" />
   </head>
   <style>
-    .data-container{
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 10px;
+    .data-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
     }
-    .article{
-        border-radius: 25px;
-        border: 1px solid lightgrey;
-        padding: 10px;
-        text-align: center;
+    .article {
+      border-radius: 25px;
+      border: 1px solid lightgrey;
+      padding: 10px;
+      text-align: center;
     }
-    img{
-        border-radius: 25px;
-        max-width: 100%;
-        aspect-ratio: 1/1;
-        object-fit: cover;
+    img {
+      border-radius: 25px;
+      max-width: 100%;
+      object-fit: cover;
     }
-</style>
+  </style>
   <body>
     <header>
       <nav>
-        <h1>Alle</h1>
+        <h1>alle</h1>
         <button data-kategori="alle" class="valgt">alle</button>
         <button data-kategori="drikkevarer">drikkevarer</button>
         <button data-kategori="forretter">forretter</button>
@@ -40,23 +39,31 @@
       </nav>
     </header>
     <section id="popup">
-      <div id="luk"></div>
-      <article id="liste">
-        <section class="data-container">
-        </section>
-        <template>
-          <section class="article">
-            <p class="kategori"></p>
-            <h2 class="navn"></h3>
-            <p class="oprindelsesregion"></p>
-            <img src="" alt="" />
-            <p class="kortBeskrivelse"></p>
-            <p class="langBeskrivelse"></p>
-            <p class="pris"></p>
-          </section>
-        </template>
+      <article class="article">
+        <div id="luk"></div>
+        <p class="kategori"></p>
+        <h2 class="navn"></h2>
+        <p class="oprindelsesregion"></p>
+        <img src="" alt="" />
+        <p class="kortBeskrivelse"></p>
+        <p class="langBeskrivelse"></p>
+        <p class="pris"></p>
       </article>
     </section>
+    <article id="liste">
+      <section class="data-container"></section>
+      <template>
+        <section class="article">
+          <p class="kategori"></p>
+          <h2 class="navn"></h2>
+          <p class="oprindelsesregion"></p>
+          <img src="" alt="" />
+          <p class="kortBeskrivelse"></p>
+          <p class="langBeskrivelse"></p>
+          <p class="pris"></p>
+        </section>
+      </template>
+    </article>
     <script>
       const fil = "https://babushka-dd8a.restdb.io/rest/menu";
       const mereInfo = {
@@ -65,22 +72,22 @@
         },
       };
 
-      document.addEventListener("DOMContentLoaded", start)
+      document.addEventListener("DOMContentLoaded", start);
       let filter = "alle";
       let json;
-      const header = document.querySelector("header h1")
+      const header = document.querySelector("nav h1");
 
-      function start (){
+      function start() {
         const filterKnapper = document.querySelectorAll("nav button");
-        filterKnapper.forEach(knap => knap.addEventListener("click", filtrerRetter));
+        filterKnapper.forEach((knap) => knap.addEventListener("click", filtrerRetter));
         hentData();
-        header.textContent = this.textContent;
       }
 
-      function filtrerRetter(){
+      function filtrerRetter() {
         filter = this.dataset.kategori;
         document.querySelector(".valgt").classList.remove("valgt");
-        this.classList.add("valgt")
+        this.classList.add("valgt");
+        header.textContent = this.textContent;
         vis(json);
       }
 
@@ -95,20 +102,36 @@
         const retTemplate = document.querySelector("template");
         container.textContent = "";
         json.forEach((ret) => {
-          if (filter == ret.kategori || filter == "alle"){
-          const klon = retTemplate.cloneNode(true).content;
-          klon.querySelector(".kategori").textContent = "kategori: " + ret.kategori;
-          klon.querySelector(".navn").textContent = ret.navn;
-          klon.querySelector(".oprindelsesregion").textContent = ret.oprindelsesregion
-          klon.querySelector("img").src = "img/"+ ret.billednavn + "-md.jpg";
-          klon.querySelector("img").alt = ret.billednavn;
-          klon.querySelector(".kortBeskrivelse").textContent = ret.kortbeskrivelse;
-          klon.querySelector(".langBeskrivelse").textContent = ret.langbeskrivelse;
-          klon.querySelector(".pris").textContent = ret.pris + " kr";
-          container.appendChild(klon);
+          if (filter == ret.kategori || filter == "alle") {
+            const klon = retTemplate.cloneNode(true).content;
+            klon.querySelector(".kategori").textContent = "kategori: " + ret.kategori;
+            klon.querySelector(".navn").textContent = ret.navn;
+            klon.querySelector(".oprindelsesregion").textContent = ret.oprindelsesregion;
+            klon.querySelector("img").src = "img/" + ret.billednavn + "-md.jpg";
+            klon.querySelector("img").alt = ret.billednavn;
+            klon.querySelector(".kortBeskrivelse").textContent = ret.kortbeskrivelse;
+            klon.querySelector(".langBeskrivelse").textContent = ret.langbeskrivelse;
+            klon.querySelector(".pris").textContent = ret.pris + " kr";
+            klon.querySelector(".article").addEventListener("click", () => visDetaljer(ret));
+            container.appendChild(klon);
           }
         });
       }
+
+      function visDetaljer(ret) {
+        popup.style.display = "flex";
+        popup.querySelector(".kategori").textContent = "kategori: " + ret.kategori;
+        popup.querySelector(".navn").textContent = ret.navn;
+        popup.querySelector(".oprindelsesregion").textContent = ret.oprindelsesregion;
+        popup.querySelector("img").src = "img/" + ret.billednavn + "-md.jpg";
+        popup.querySelector("img").alt = ret.billednavn;
+        popup.querySelector(".kortBeskrivelse").textContent = ret.kortbeskrivelse;
+        popup.querySelector(".langBeskrivelse").textContent = ret.langbeskrivelse;
+        popup.querySelector(".pris").textContent = ret.pris + " kr";
+      }
+
+      document.querySelector("#luk").addEventListener("click", () => (popup.style.display = "none"));
+
       hentData(fil);
     </script>
   </body>

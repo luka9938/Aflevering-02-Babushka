@@ -1,0 +1,44 @@
+.valgt {
+  background-color: red;
+}
+
+#popup {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  overflow: scroll;
+}
+
+#popup article {
+  width: 33vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem auto;
+  border-radius: 25px;
+  padding: 50px;
+  background-color: #ffffff;
+}
+
+#popup p {
+  margin: 10px;
+}
+
+#popup h2 {
+  margin: 15px;
+}
+
+#luk {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  padding: 1em;
+  font-size: 1.7em;
+  font-weight: bolder;
+  color: white;
+}
