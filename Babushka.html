@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <meta name="robots" content="noindex" />
+  </head>
+  <style>
+    .data-container{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+    }
+    .article{
+        border-radius: 25px;
+        border: 1px solid lightgrey;
+        padding: 10px;
+        text-align: center;
+    }
+    img{
+        border-radius: 25px;
+        max-width: 100%;
+        aspect-ratio: 1/1;
+        object-fit: cover;
+    }
+</style>
+  <body>
+    <header>
+      <nav>
+        <h1>Alle</h1>
+        <button data-kategori="alle" class="valgt">alle</button>
+        <button data-kategori="drikkevarer">drikkevarer</button>
+        <button data-kategori="forretter">forretter</button>
+        <button data-kategori="hovedretter">hovedretter</button>
+        <button data-kategori="desserter">desserter</button>
+        <button data-kategori="sideorders">sideorders</button>
+      </nav>
+    </header>
+    <article id="liste">
+      <section class="data-container">
+      </section>
+      <template>
+        <section class="article">
+          <p class="kategori"></p>
+          <h2 class="navn"></h3>
+          <p class="oprindelsesregion"></p>
+          <img src="" alt="" />
+          <p class="kortBeskrivelse"></p>
+          <p class="langBeskrivelse"></p>
+          <p class="pris"></p>
+        </section>
+      </template>
+    </article>
+    <script>
+      const fil = "https://babushka-dd8a.restdb.io/rest/menu";
+      const mereInfo = {
+        headers: {
+          "x-apikey": "600ec2fb1346a1524ff12de4",
+        },
+      };
+
+      document.addEventListener("DOMContentLoaded", start)
+      let filter = "alle";
+      let json;
+      const header = document.querySelector("header h1")
+
+      function start (){
+        const filterKnapper = document.querySelectorAll("nav button");
+        filterKnapper.forEach(knap => knap.addEventListener("click", filtrerRetter));
+        hentData();
+        header.textContent = this.textContent;
+      }
+
+      function filtrerRetter(){
+        filter = this.dataset.kategori;
+        document.querySelector(".valgt").classList.remove("valgt");
+        this.classList.add("valgt")
+        vis(json);
+      }
+
+      async function hentData(fil) {
+        const result = await fetch(fil, mereInfo);
+        json = await result.json();
+        console.log(json);
+        vis(json);
+      }
+      function vis(json) {
+        const container = document.querySelector(".data-container");
+        const retTemplate = document.querySelector("template");
+        container.textContent = "";
+        json.forEach((ret) => {
+          if (filter == ret.kategori || filter == "alle"){
+          const klon = retTemplate.cloneNode(true).content;
+          klon.querySelector(".kategori").textContent = "kategori: " + ret.kategori;
+          klon.querySelector(".navn").textContent = ret.navn;
+          klon.querySelector(".oprindelsesregion").textContent = ret.oprindelsesregion
+          klon.querySelector("img").src = ret.billednavn + "-md.jpg";
+          klon.querySelector("img").alt = ret.billednavn;
+          klon.querySelector(".kortBeskrivelse").textContent = ret.kortbeskrivelse;
+          klon.querySelector(".langBeskrivelse").textContent = ret.langbeskrivelse;
+          klon.querySelector(".pris").textContent = ret.pris + " kr";
+          container.appendChild(klon);
+          }
+        });
+      }
+      hentData(fil);
+    </script>
+  </body>
+</html>
