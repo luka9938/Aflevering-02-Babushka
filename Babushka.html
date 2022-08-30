@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="css/generel.css" />
     <meta name="robots" content="noindex" />
   </head>
   <style>
@@ -38,21 +39,24 @@
         <button data-kategori="sideorders">sideorders</button>
       </nav>
     </header>
-    <article id="liste">
-      <section class="data-container">
-      </section>
-      <template>
-        <section class="article">
-          <p class="kategori"></p>
-          <h2 class="navn"></h3>
-          <p class="oprindelsesregion"></p>
-          <img src="" alt="" />
-          <p class="kortBeskrivelse"></p>
-          <p class="langBeskrivelse"></p>
-          <p class="pris"></p>
+    <section id="popup">
+      <div id="luk"></div>
+      <article id="liste">
+        <section class="data-container">
         </section>
-      </template>
-    </article>
+        <template>
+          <section class="article">
+            <p class="kategori"></p>
+            <h2 class="navn"></h3>
+            <p class="oprindelsesregion"></p>
+            <img src="" alt="" />
+            <p class="kortBeskrivelse"></p>
+            <p class="langBeskrivelse"></p>
+            <p class="pris"></p>
+          </section>
+        </template>
+      </article>
+    </section>
     <script>
       const fil = "https://babushka-dd8a.restdb.io/rest/menu";
       const mereInfo = {
@@ -96,7 +100,7 @@
           klon.querySelector(".kategori").textContent = "kategori: " + ret.kategori;
           klon.querySelector(".navn").textContent = ret.navn;
           klon.querySelector(".oprindelsesregion").textContent = ret.oprindelsesregion
-          klon.querySelector("img").src = ret.billednavn + "-md.jpg";
+          klon.querySelector("img").src = "img/"+ ret.billednavn + "-md.jpg";
           klon.querySelector("img").alt = ret.billednavn;
           klon.querySelector(".kortBeskrivelse").textContent = ret.kortbeskrivelse;
           klon.querySelector(".langBeskrivelse").textContent = ret.langbeskrivelse;
