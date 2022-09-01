@@ -20,11 +20,10 @@ main {
 
 #popup article {
   width: 33vw;
-  align-items: center;
-  justify-content: center;
   margin: 1rem auto;
   padding: 50px;
   background-color: #ffffff;
+  height: auto;
 }
 
 #popup p {
@@ -39,6 +38,8 @@ main {
   position: fixed;
   width: 100vw;
   height: 100vh;
+  left: 0;
+  top: 0;
   padding: 1em;
   font-size: 1.7em;
   font-weight: bolder;
@@ -54,10 +55,50 @@ main {
 .col-2 {
   display: flex;
   flex: 1;
+  justify-content: center;
+  margin: 10px;
   flex-direction: column;
+  height: 318px;
 }
 
 footer {
   width: 100vw;
   height: 100vh;
+}
+
+p {
+  display: inline-block;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  margin: 10px;
+}
+
+.icon {
+  max-width: 10%;
+  float: left;
+  margin-top: 7px;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+h2 {
+  margin: 0;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.5rem;
+}
+
+.kortBeskrivelse {
+  max-width: 18ch;
+}
+
+.pris {
+  align-self: flex-end;
+  text-align: left;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-top: auto;
 }
