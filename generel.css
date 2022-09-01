@@ -1,5 +1,5 @@
 .valgt {
-  background-color: khaki;
+  text-decoration: underline;
 }
 
 button {
@@ -7,10 +7,14 @@ button {
   height: 4rem;
   width: 12rem;
   font-family: 'Courier New', Courier, monospace;
-  background-color: darkkhaki;
+  background-color: #171010;
   font-size: 1.5rem;
   color: white;
   font-weight: bold;
+}
+
+button:hover {
+  text-decoration: underline;
 }
 
 html {
@@ -24,7 +28,7 @@ body{
 
 main {
   max-width: 1400px;
-  margin: 0 auto;
+  margin: 50px auto;
   margin-top: 50px;
 }
 
@@ -40,7 +44,8 @@ header {
   height: 250px;
   text-align: center;
   padding-inline-start: 0px;
-  background-color: khaki;
+  background-image: url(img/wood.jpg);
+  background-position: 35% 90%;
 }
 
 .logo{
@@ -61,10 +66,15 @@ header {
 #popup article {
   flex-direction: column;
   width: 33vw;
-  margin: 6rem auto;
+  margin: 3rem auto;
   background-color: #ffffff;
-  height: 66vh;
+  height: 80vh;
   text-align: center;
+}
+
+#popup .article .kategori {
+  margin: 0;
+  margin-top: 20px;
 }
 
 #popup h2 {
@@ -83,7 +93,7 @@ header {
   color: white;
 }
 
-#menu :hover {
+#menu:hover {
   background-color: lightgrey;
 }
 
@@ -103,8 +113,23 @@ header {
 }
 
 footer {
-  width: 100vw;
-  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+  margin: 0;
+  padding: 0;
+  left: 0;
+  top: 0;
+  height: 150px;
+  text-align: center;
+  padding-inline-start: 0px;
+  background-image: url(img/wood.jpg);
+  background-position: 35% 10%;
 }
 
 p {
@@ -154,7 +179,13 @@ nav {
   margin: 0;
   width: 100vw;
   height: 4rem;
-  background-color: darkkhaki;
+  background-color: #171010;
   left: 0;
   top: 0;
+}
+
+.dots {
+  display: inline-block;
+  border-bottom: 3px dotted rgba(0, 0, 0, 0.3);
+  margin: 10px 4px 10px;
 }
