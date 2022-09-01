@@ -13,6 +13,7 @@
         grid-template-columns: repeat(3, 1fr);
         gap: 10px;
       }
+
       .article {
         display: flex;
         flex-direction: row;
@@ -20,26 +21,27 @@
         height: 338px;
         border: 1px solid lightgrey;
         padding: 10px;
-        text-align: center;
       }
-      img {
+
+      .picture {
         max-width: 100%;
         object-fit: cover;
+        max-height: 338px;
       }
     </style>
   </head>
   <body>
     <header>
-      <nav>
-        <h1>alle</h1>
-        <button data-kategori="alle" class="valgt">alle</button>
-        <button data-kategori="drikkevarer">drikkevarer</button>
-        <button data-kategori="forretter">forretter</button>
-        <button data-kategori="hovedretter">hovedretter</button>
-        <button data-kategori="desserter">desserter</button>
-        <button data-kategori="sideorders">sideorders</button>
-      </nav>
+      <
     </header>
+    <nav>
+      <button data-kategori="alle" class="valgt">alle</button>
+      <button data-kategori="drikkevarer">drikkevarer</button>
+      <button data-kategori="forretter">forretter</button>
+      <button data-kategori="hovedretter">hovedretter</button>
+      <button data-kategori="desserter">desserter</button>
+      <button data-kategori="sideorders">sideorders</button>
+    </nav>
     <main>
       <section id="popup">
         <article class="article">
@@ -47,7 +49,7 @@
           <p class="kategori"></p>
           <h2 class="navn"></h2>
           <p class="oprindelsesregion"></p>
-          <img src="" alt="" />
+          <img class="picture" src="" alt="" />
           <p class="langBeskrivelse"></p>
           <p class="pris"></p>
         </article>
@@ -56,13 +58,25 @@
         <section class="data-container"></section>
         <template>
           <section class="article">
-            <article class="col-1"><img src="" alt="" /></article>
-            <article class="col-2">            
-              <p class="kategori"></p>
+            <article class="col-1"><img class="picture" src="" alt="" /></article>
+            <article class="col-2">
               <h2 class="navn"></h2>
-              <p class="oprindelsesregion"></p>
-              <p class="kortBeskrivelse"></p>
-              <p class="pris"></p></article>
+              <ul>
+                <li>
+                <img class="icon" src="img/food-tray.png"">  
+                <p class="kategori"></p>
+                </li>
+                <li>
+                <img class="icon" src="img/location.png">  
+                <p class="oprindelsesregion"></p>
+                </li>
+                <li>
+                <img class="icon" src="img/description.png">
+                <p class="kortBeskrivelse"></p>
+                </li>
+              </ul>
+              <p class="pris"></p>
+            </article>
           </section>
         </template>
       </article>
@@ -79,7 +93,6 @@
       document.addEventListener("DOMContentLoaded", start);
       let filter = "alle";
       let json;
-      const header = document.querySelector("nav h1");
 
       function start() {
         const filterKnapper = document.querySelectorAll("nav button");
@@ -91,7 +104,6 @@
         filter = this.dataset.kategori;
         document.querySelector(".valgt").classList.remove("valgt");
         this.classList.add("valgt");
-        header.textContent = this.textContent;
         vis(json);
       }
 
@@ -108,11 +120,11 @@
         json.forEach((ret) => {
           if (filter == ret.kategori || filter == "alle") {
             const klon = retTemplate.cloneNode(true).content;
-            klon.querySelector(".kategori").textContent = "kategori: " + ret.kategori;
+            klon.querySelector(".kategori").textContent = ret.kategori;
             klon.querySelector(".navn").textContent = ret.navn;
             klon.querySelector(".oprindelsesregion").textContent = ret.oprindelsesregion;
-            klon.querySelector("img").src = "img/" + ret.billednavn + "-md.jpg";
-            klon.querySelector("img").alt = ret.billednavn;
+            klon.querySelector(".picture").src = "img/" + ret.billednavn + "-md.jpg";
+            klon.querySelector(".picture").alt = ret.billednavn;
             klon.querySelector(".kortBeskrivelse").textContent = ret.kortbeskrivelse;
             klon.querySelector(".pris").textContent = ret.pris + " kr";
             klon.querySelector(".article").addEventListener("click", () => visDetaljer(ret));
@@ -123,11 +135,11 @@
 
       function visDetaljer(ret) {
         popup.style.display = "flex";
-        popup.querySelector(".kategori").textContent = "kategori: " + ret.kategori;
+        popup.querySelector(".kategori").textContent = ret.kategori;
         popup.querySelector(".navn").textContent = ret.navn;
         popup.querySelector(".oprindelsesregion").textContent = ret.oprindelsesregion;
-        popup.querySelector("img").src = "img/" + ret.billednavn + "-md.jpg";
-        popup.querySelector("img").alt = ret.billednavn;
+        popup.querySelector(".picture").src = "img/" + ret.billednavn + "-md.jpg";
+        popup.querySelector(".picture").alt = ret.billednavn;
         popup.querySelector(".langBeskrivelse").textContent = ret.langbeskrivelse;
         popup.querySelector(".pris").textContent = ret.pris + " kr";
       }
