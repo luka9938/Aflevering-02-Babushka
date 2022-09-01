@@ -2,6 +2,11 @@
   background-color: red;
 }
 
+main {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
 #popup {
   display: none;
   position: fixed;
@@ -15,12 +20,9 @@
 
 #popup article {
   width: 33vw;
-  display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   margin: 1rem auto;
-  border-radius: 25px;
   padding: 50px;
   background-color: #ffffff;
 }
@@ -41,4 +43,21 @@
   font-size: 1.7em;
   font-weight: bolder;
   color: white;
+}
+
+.col-1{
+  display: flex;
+  flex: 1;
+  max-width: 200px;
+}
+
+.col-2 {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+footer {
+  width: 100vw;
+  height: 100vh;
 }

@@ -7,25 +7,27 @@
     <title>Document</title>
     <link rel="stylesheet" href="generel.css" />
     <meta name="robots" content="noindex" />
+    <style>
+      .data-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+      }
+      .article {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        height: 338px;
+        border: 1px solid lightgrey;
+        padding: 10px;
+        text-align: center;
+      }
+      img {
+        max-width: 100%;
+        object-fit: cover;
+      }
+    </style>
   </head>
-  <style>
-    .data-container {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-    }
-    .article {
-      border-radius: 25px;
-      border: 1px solid lightgrey;
-      padding: 10px;
-      text-align: center;
-    }
-    img {
-      border-radius: 25px;
-      max-width: 100%;
-      object-fit: cover;
-    }
-  </style>
   <body>
     <header>
       <nav>
@@ -38,32 +40,34 @@
         <button data-kategori="sideorders">sideorders</button>
       </nav>
     </header>
-    <section id="popup">
-      <article class="article">
-        <div id="luk"></div>
-        <p class="kategori"></p>
-        <h2 class="navn"></h2>
-        <p class="oprindelsesregion"></p>
-        <img src="" alt="" />
-        <p class="kortBeskrivelse"></p>
-        <p class="langBeskrivelse"></p>
-        <p class="pris"></p>
-      </article>
-    </section>
-    <article id="liste">
-      <section class="data-container"></section>
-      <template>
-        <section class="article">
+    <main>
+      <section id="popup">
+        <article class="article">
+          <div id="luk"></div>
           <p class="kategori"></p>
           <h2 class="navn"></h2>
           <p class="oprindelsesregion"></p>
           <img src="" alt="" />
-          <p class="kortBeskrivelse"></p>
           <p class="langBeskrivelse"></p>
           <p class="pris"></p>
-        </section>
-      </template>
-    </article>
+        </article>
+      </section>
+      <article id="liste">
+        <section class="data-container"></section>
+        <template>
+          <section class="article">
+            <article class="col-1"><img src="" alt="" /></article>
+            <article class="col-2">            
+              <p class="kategori"></p>
+              <h2 class="navn"></h2>
+              <p class="oprindelsesregion"></p>
+              <p class="kortBeskrivelse"></p>
+              <p class="pris"></p></article>
+          </section>
+        </template>
+      </article>
+    </main>
+    <footer>Lukas Gravgaard</footer>
     <script>
       const fil = "https://babushka-dd8a.restdb.io/rest/menu";
       const mereInfo = {
@@ -110,7 +114,6 @@
             klon.querySelector("img").src = "img/" + ret.billednavn + "-md.jpg";
             klon.querySelector("img").alt = ret.billednavn;
             klon.querySelector(".kortBeskrivelse").textContent = ret.kortbeskrivelse;
-            klon.querySelector(".langBeskrivelse").textContent = ret.langbeskrivelse;
             klon.querySelector(".pris").textContent = ret.pris + " kr";
             klon.querySelector(".article").addEventListener("click", () => visDetaljer(ret));
             container.appendChild(klon);
@@ -125,7 +128,6 @@
         popup.querySelector(".oprindelsesregion").textContent = ret.oprindelsesregion;
         popup.querySelector("img").src = "img/" + ret.billednavn + "-md.jpg";
         popup.querySelector("img").alt = ret.billednavn;
-        popup.querySelector(".kortBeskrivelse").textContent = ret.kortbeskrivelse;
         popup.querySelector(".langBeskrivelse").textContent = ret.langbeskrivelse;
         popup.querySelector(".pris").textContent = ret.pris + " kr";
       }
