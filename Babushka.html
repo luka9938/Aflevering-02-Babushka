@@ -19,8 +19,9 @@
         flex-direction: row;
         flex-wrap: wrap;
         height: 338px;
-        border: 1px solid lightgrey;
         padding: 10px;
+        background-color: white;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
       }
 
       .picture {
@@ -32,6 +33,7 @@
   </head>
   <body>
     <header>
+      <img class="logo" src="img/Babushka_logo_white.png" alt="">
     </header>
     <nav>
       <button data-kategori="alle" class="valgt">alle</button>
@@ -44,17 +46,18 @@
     <main>
       <section id="popup">
         <article class="article">
-          <div id="luk"></div>
-          <p class="kategori"></p>
-          <h2 class="navn"></h2>
-          <p class="oprindelsesregion"></p>
           <img class="picture" src="" alt="" />
+          <div id="luk"></div>
+          <h2 class="navn"></h2>
+          <p class="kategori"></p>
+          <p class="oprindelsesregion"></p>
+          <p class="kortBeskrivelse"></p>
           <p class="langBeskrivelse"></p>
           <p class="pris"></p>
         </article>
       </section>
       <article id="liste">
-        <section class="data-container"></section>
+        <section class="data-container" id="menu"></section>
         <template>
           <section class="article">
             <article class="col-1"><img class="picture" src="" alt="" /></article>
@@ -139,9 +142,10 @@
         popup.querySelector(".oprindelsesregion").textContent = ret.oprindelsesregion;
         popup.querySelector(".picture").src = "img/" + ret.billednavn + "-md.jpg";
         popup.querySelector(".picture").alt = ret.billednavn;
+        popup.querySelector(".kortBeskrivelse").textContent = ret.kortbeskrivelse;
         popup.querySelector(".langBeskrivelse").textContent = ret.langbeskrivelse;
         popup.querySelector(".pris").textContent = ret.pris + " kr";
-      }
+      };
 
       document.querySelector("#luk").addEventListener("click", () => (popup.style.display = "none"));
 

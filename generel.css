@@ -1,10 +1,50 @@
 .valgt {
-  background-color: red;
+  background-color: khaki;
+}
+
+button {
+  border-style: none;
+  height: 4rem;
+  width: 12rem;
+  font-family: 'Courier New', Courier, monospace;
+  background-color: darkkhaki;
+  font-size: 1.5rem;
+  color: white;
+  font-weight: bold;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body{
+  margin: 0 auto;
+  background-color: whitesmoke;
 }
 
 main {
   max-width: 1400px;
   margin: 0 auto;
+  margin-top: 50px;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  left: 0;
+  top: 0;
+  height: 250px;
+  text-align: center;
+  padding-inline-start: 0px;
+  background-color: khaki;
+}
+
+.logo{
+  max-width: 15%;
 }
 
 #popup {
@@ -19,15 +59,12 @@ main {
 }
 
 #popup article {
+  flex-direction: column;
   width: 33vw;
-  margin: 1rem auto;
-  padding: 50px;
+  margin: 6rem auto;
   background-color: #ffffff;
-  height: auto;
-}
-
-#popup p {
-  margin: 10px;
+  height: 66vh;
+  text-align: center;
 }
 
 #popup h2 {
@@ -44,6 +81,10 @@ main {
   font-size: 1.7em;
   font-weight: bolder;
   color: white;
+}
+
+#menu :hover {
+  background-color: lightgrey;
 }
 
 .col-1{
@@ -88,9 +129,14 @@ h2 {
   margin: 0;
   font-family: 'Courier New', Courier, monospace;
   font-size: 1.5rem;
+  text-decoration: underline;
 }
 
-.kortBeskrivelse {
+.col-2 p {
+  font-weight: bold;
+}
+
+.col-2 .kortBeskrivelse {
   max-width: 18ch;
 }
 
@@ -101,4 +147,14 @@ h2 {
   font-size: 1.5rem;
   font-weight: bold;
   margin-top: auto;
+  text-decoration: underline;
+}
+
+nav {
+  margin: 0;
+  width: 100vw;
+  height: 4rem;
+  background-color: darkkhaki;
+  left: 0;
+  top: 0;
 }
