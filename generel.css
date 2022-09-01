@@ -5,10 +5,10 @@
 button {
   border-style: none;
   height: 4rem;
-  width: 12rem;
-  font-family: 'Courier New', Courier, monospace;
+  width: 9rem;
+  font-family: "Courier New", Courier, monospace;
   background-color: #171010;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   color: white;
   font-weight: bold;
 }
@@ -21,7 +21,7 @@ html {
   scroll-behavior: smooth;
 }
 
-body{
+body {
   margin: 0 auto;
   background-color: whitesmoke;
 }
@@ -45,11 +45,11 @@ header {
   text-align: center;
   padding-inline-start: 0px;
   background-image: url(img/wood.jpg);
-  background-position: 35% 90%;
+  background-position: 37% 90%;
 }
 
-.logo{
-  max-width: 15%;
+.logo {
+  max-width: 20%;
 }
 
 #popup {
@@ -66,15 +66,19 @@ header {
 #popup article {
   flex-direction: column;
   width: 33vw;
-  margin: 3rem auto;
+  margin: 1rem auto;
   background-color: #ffffff;
-  height: 80vh;
+  height: 90vh;
   text-align: center;
 }
 
 #popup .article .kategori {
   margin: 0;
   margin-top: 20px;
+}
+
+#popup .article .langBeskrivelse {
+  font-size: 0.7rem;
 }
 
 #popup h2 {
@@ -97,7 +101,7 @@ header {
   background-color: lightgrey;
 }
 
-.col-1{
+.col-1 {
   display: flex;
   flex: 1;
   max-width: 200px;
@@ -117,7 +121,7 @@ footer {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: "Courier New", Courier, monospace;
   font-size: 1.5rem;
   font-weight: bold;
   color: white;
@@ -129,7 +133,7 @@ footer {
   text-align: center;
   padding-inline-start: 0px;
   background-image: url(img/wood.jpg);
-  background-position: 35% 10%;
+  background-position: 37% 10%;
 }
 
 p {
@@ -152,7 +156,7 @@ ul {
 
 h2 {
   margin: 0;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: "Courier New", Courier, monospace;
   font-size: 1.5rem;
   text-decoration: underline;
 }
@@ -168,7 +172,7 @@ h2 {
 .pris {
   align-self: flex-end;
   text-align: left;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: "Courier New", Courier, monospace;
   font-size: 1.5rem;
   font-weight: bold;
   margin-top: auto;
@@ -187,5 +191,9 @@ nav {
 .dots {
   display: inline-block;
   border-bottom: 3px dotted rgba(0, 0, 0, 0.3);
-  margin: 10px 4px 10px;
+  margin: 5px 4px 5px;
+}
+
+.dot_space {
+  margin: 0;
 }

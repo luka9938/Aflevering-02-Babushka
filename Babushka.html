@@ -33,7 +33,7 @@
   </head>
   <body>
     <header>
-      <img class="logo" src="img/Babushka_logo_white.png" alt="">
+      <img class="logo" src="img/Babushka_logo_white.png" alt="" />
     </header>
     <nav>
       <button data-kategori="alle" class="valgt">alle</button>
@@ -53,7 +53,7 @@
           <p class="oprindelsesregion"></p>
           <div class="dots"></div>
           <p class="kortBeskrivelse"></p>
-          <p>...</p>
+          <p class="dot_space">...</p>
           <p class="langBeskrivelse"></p>
           <p class="pris"></p>
         </article>
@@ -67,16 +67,16 @@
               <h2 class="navn"></h2>
               <ul>
                 <li>
-                <img class="icon" src="img/food-tray.png"">  
-                <p class="kategori"></p>
+                  <img class="icon" src="img/food-tray.png"">
+                  <p class="kategori"></p>
                 </li>
                 <li>
-                <img class="icon" src="img/location.png">  
-                <p class="oprindelsesregion"></p>
+                  <img class="icon" src="img/location.png" />
+                  <p class="oprindelsesregion"></p>
                 </li>
                 <li>
-                <img class="icon" src="img/description.png">
-                <p class="kortBeskrivelse"></p>
+                  <img class="icon" src="img/description.png" />
+                  <p class="kortBeskrivelse"></p>
                 </li>
               </ul>
               <p class="pris"></p>
@@ -147,7 +147,7 @@
         popup.querySelector(".kortBeskrivelse").textContent = ret.kortbeskrivelse;
         popup.querySelector(".langBeskrivelse").textContent = ret.langbeskrivelse;
         popup.querySelector(".pris").textContent = ret.pris + " kr";
-      };
+      }
 
       document.querySelector("#luk").addEventListener("click", () => (popup.style.display = "none"));
 
